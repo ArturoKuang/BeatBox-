@@ -4,10 +4,10 @@ import android.content.res.AssetManager
 import android.util.Log
 import java.lang.Exception
 
-private const val TAG = "Beatbox"
+private const val TAG = "BeatBox"
 private const val SOUNDS_FOLDER = "sample_sounds"
 
-class Beatbox(private val assets: AssetManager) {
+class BeatBox(private val assets: AssetManager) {
 
     val sounds: List<Sound>
 
@@ -16,6 +16,7 @@ class Beatbox(private val assets: AssetManager) {
     }
 
     private fun loadSounds(): List<Sound> {
+
         val soundNames: Array<String>
 
         try {
@@ -25,12 +26,11 @@ class Beatbox(private val assets: AssetManager) {
             return emptyList()
         }
         val sounds = mutableListOf<Sound>()
-        soundNames.forEach { fileName ->
-            val assetPath = "$SOUNDS_FOLDER/$fileName"
+        soundNames.forEach { filename ->
+            val assetPath = "$SOUNDS_FOLDER/$filename"
             val sound = Sound(assetPath)
             sounds.add(sound)
         }
-
         return sounds
     }
 }
